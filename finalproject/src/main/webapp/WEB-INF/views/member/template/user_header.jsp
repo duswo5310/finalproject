@@ -34,24 +34,29 @@
 
         <!--Theme Responsive css-->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/m/css/responsive.css" />
-		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-	    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/m/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-   		<script>
-   			$(function(){
-	   			 axios({
-	 				url:"${pageContext.request.contextPath}/test/message/count_member",
-	 				method:"get"
-	 			})
-	 			.then(function(response){
-	 				if(response.data==0){
-	 	    			$(".readCount").hide();
-	 	    		}else{
-	 					$(".readCount").text(response.data);
-	 	    		}
- 				})  
-   			});
-   		</script>
+         <script>
+            $(function(){
+                axios({
+                url:"${pageContext.request.contextPath}/test/message/count_member",
+                method:"get"
+             })
+             .then(function(response){
+                if(response.data==0){
+                    $(".readCount").hide();
+                 }else{
+                   $(".readCount").text(response.data);
+                 }
+             })  
+            });
+         </script>
+         <style>
+            .badge{
+               background-color: red;
+            }
+         </style>
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse">
@@ -66,19 +71,16 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul>
-                        	<li class="chat"><a href=""><i class="fa fa-comments" aria-hidden="true" id="chat"></i></a></li>
-                         	<li class="search"><a href="#"><i class="fa fa-user-circle-o "></i></a></li>
-<!--                             <li class="search"><a href="#"><i class="fa fa-search"></i></a></li> -->
-                         	<li class="search">
-                         		<a href="#">
-	                         		<i class="fa fa-user-circle-o"></i>
-                         		</a>
-                         	</li>
+                            <li class="search">
+                               <a href="#">
+                                  <i class="fa fa-user-circle-o"></i>
+                               </a>
+                            </li>
                             <li class="search" onclick="location.href='${pageContext.request.contextPath}/member/message/message'">
-		                        <a href="${pageContext.request.contextPath}/member/message/message">
-		                            <i class="fa fa-envelope" aria-hidden="true"></i>
-		                            <span class="badge badge-danger readCount"></span>
-		                        </a>
+                              <a href="${pageContext.request.contextPath}/member/message/message">
+                                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                                  <span class="badge badge-danger readCount"></span>
+                              </a>
                             </li>
                             <li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
                         </ul>
@@ -103,15 +105,16 @@
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
               
-                            <li><a href="${pageContext.request.contextPath}/member/pay/pay_main">상품 충전</a></li>                    
-                            <li><a href="#service">개인석</a></li>                                     
-                            <li><a href="#pricing">리뷰</a></li>  
+                            <li><a href="#about">상품 충전</a></li>                    
+                            <li><a href="#service">개인석</a></li>                    
+                            <li><a href="#portfolio">스터디룸</a></li>                    
+                            <li><a href="${pageContext.request.contextPath}/member/review/list">리뷰</a></li>  
                             <li><a href="${pageContext.request.contextPath}/member/account/logout">로그아웃</a></li>   
                                                
                         </ul>
                     </div>
                 </div>  
-  
+ 
 
                 <!-- 사이드 메뉴 -->
                 <div class="side">
@@ -119,8 +122,8 @@
                     <div class="widget">
                         <h6 class="title">Custom Pages</h6>
                         <ul class="link">
-	                        <li><a href="#">공도리 홈</a></li>
-                         	<li><a href="#">소개글</a></li>
+                           <li><a href="#">공도리 홈</a></li>
+                            <li><a href="#">소개글</a></li>
                             <li><a href="#">공지사항</a></li>
                             <li><a href="#">지점 스토리</a></li>
                             <li><a href="#">가맹 문의</a></li>
@@ -130,7 +133,6 @@
                         <h6 class="title">Member Pages</h6>
                         <ul class="link">
                             <li><a href="${pageContext.request.contextPath}/member/account/info?member_no=${memberinfo.member_no}">마이페이지</a></li>
-                            <li><a href="${pageContext.request.contextPath}/member/pay/pay_detail">결제내역 조회</a></li>
                             <li><a href="#">상품 충전</a></li>
                             <li><a href="#">좌석 예약</a></li>
                             <li><a href="#">스터디룸 예약</a></li>
@@ -141,4 +143,3 @@
                 </div>
                 <!-- End Side Menu -->
 
-            </nav>
