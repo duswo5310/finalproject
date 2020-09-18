@@ -206,6 +206,7 @@
 										</div>
 									</div>
 
+
 									<div class="chatList">
 										
 									</div>
@@ -234,8 +235,5 @@
 		</div>
 	</div>
 </section>
-
-
-
 
 <jsp:include page="/WEB-INF/views/member/template/footer.jsp"></jsp:include>

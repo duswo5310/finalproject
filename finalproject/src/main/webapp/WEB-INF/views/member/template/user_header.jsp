@@ -34,12 +34,24 @@
 
         <!--Theme Responsive css-->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/m/css/responsive.css" />
-
+		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+	    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/m/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-   	<!-- 챗봇 모달 창 띄우기 -->
-
-   
-   
+   		<script>
+   			$(function(){
+	   			 axios({
+	 				url:"${pageContext.request.contextPath}/test/message/count_member",
+	 				method:"get"
+	 			})
+	 			.then(function(response){
+	 				if(response.data==0){
+	 	    			$(".readCount").hide();
+	 	    		}else{
+	 					$(".readCount").text(response.data);
+	 	    		}
+ 				})  
+   			});
+   		</script>
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse">
@@ -49,17 +61,6 @@
 
 
             <nav class="navbar navbar-default navbar-fixed no-background bootsnav">
-<!--                 Start Top Search -->
-<!--                 <div class="top-search"> -->
-<!--                     <div class="container"> -->
-<!--                         <div class="input-group"> -->
-<!--                             <span class="input-group-addon"><i class="fa fa-search"></i></span> -->
-<!--                             <input type="text" class="form-control" placeholder="Search"> -->
-<!--                             <span class="input-group-addon close-search"><i class="fa fa-times"></i></span> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                 </div> -->
-                <!-- End Top Search -->
 
                 <div class="container">    
                     <!-- Start Atribute Navigation -->
@@ -68,6 +69,17 @@
                         	<li class="chat"><a href=""><i class="fa fa-comments" aria-hidden="true" id="chat"></i></a></li>
                          	<li class="search"><a href="#"><i class="fa fa-user-circle-o "></i></a></li>
 <!--                             <li class="search"><a href="#"><i class="fa fa-search"></i></a></li> -->
+                         	<li class="search">
+                         		<a href="#">
+	                         		<i class="fa fa-user-circle-o"></i>
+                         		</a>
+                         	</li>
+                            <li class="search" onclick="location.href='${pageContext.request.contextPath}/member/message/message'">
+		                        <a href="${pageContext.request.contextPath}/member/message/message">
+		                            <i class="fa fa-envelope" aria-hidden="true"></i>
+		                            <span class="badge badge-danger readCount"></span>
+		                        </a>
+                            </li>
                             <li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
                         </ul>
                     </div>        
@@ -96,10 +108,8 @@
                             <li><a href="#pricing">리뷰</a></li>  
                             <li><a href="${pageContext.request.contextPath}/member/account/logout">로그아웃</a></li>   
                                                
-<!--                             <li><a href="#blog">Blog</a></li>                     -->
-<!--                             <li><a href="#contact">Contact</a></li>   -->
                         </ul>
-                    </div><!-- /.navbar-collapse -->
+                    </div>
                 </div>  
   
 
