@@ -62,7 +62,7 @@ public class AccountController {
 			model.addAttribute("adminDto", get);
 			AdminDto admin_auth = (AdminDto) session.getAttribute("admininfo");
 			if(admin_auth.getAdmin_auth().equals("본사")) {
-				return "admin/accunot/list";
+				return "redirect:list";
 			}
 			modelMap.addAttribute("admin_no", admin_no);
 			return "admin/account/info";

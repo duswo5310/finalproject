@@ -2,9 +2,7 @@ package com.kh.finalproject.controller;
 
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.finalproject.entity.AdminDto;
 import com.kh.finalproject.entity.BranchDto;
 import com.kh.finalproject.entity.CertDto;
 import com.kh.finalproject.entity.LocalDto;
@@ -113,6 +112,9 @@ public class MemberAccountController {
 		memberDao.edit(memberDto);
 		int member_no = memberDto.getMember_no();
 		if(session.getAttribute("admininfo") != null){
+			AdminDto adminDto = (AdminDto)session.getAttribute("admininfo");
+			int branch_no =  adminDto.getBranch_no();
+			attr.addAttribute("branch_no", branch_no);
 			return "redirect:list";
 		}
 		attr.addAttribute("member_no", member_no);
@@ -142,8 +144,8 @@ public class MemberAccountController {
 			int member_no = memberDao.getNo(member_email);
 			memberDao.updateLoginTime(member_no);
 			MemberDto find = memberDao.get(member_no);
-			session.removeAttribute("admininfo");
 			session.setAttribute("memberinfo", find);
+			session.removeAttribute("admininfo");
 			return "redirect:/member/user";
 		}else {
 			return "redirect:login?error=error";

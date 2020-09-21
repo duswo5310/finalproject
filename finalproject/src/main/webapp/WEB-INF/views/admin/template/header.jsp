@@ -103,7 +103,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           	<c:choose>
           		<c:when test="${not empty admininfo}">
-		            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+		            <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/account/logout" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
           		</c:when>
           		<c:otherwise>
           			<a class="dropdown-item" href="${pageContext.request.contextPath}/admin/account/login">로그인</a>

@@ -141,8 +141,9 @@ $(function(){
                     return true;
                 }
             }
-</script>
+</script><br><br><br><br><br><br><br>
 <div id="content-wrapper">
+<br><br><br><br><br><br><br>
 	<div class="container-fluid">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">회원 정보 수정</li>
