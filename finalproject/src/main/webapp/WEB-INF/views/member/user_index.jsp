@@ -155,7 +155,7 @@
                      
                      var name = document.createElement("div");
                      name.classList.add("name");
-                     name = document.createTextNode('공도리봇');
+                     name = document.createTextNode('티움봇');
                      innerBox.appendChild(name);
                      
                      var content = document.createElement("div");
@@ -185,6 +185,13 @@
 });
 </script>
 <style>
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); 
+
+.container {
+	font-family: 'Noto Sans KR';
+}
+
  *{
      box-sizing: border-box;
  }
@@ -208,6 +215,7 @@
    width:50px;
    height:50px;
    border-radius: 50%;
+
 }
 
 .box{
@@ -257,7 +265,7 @@
 /*    width:200px; */
 }
 .box .innerBox{
-     flex-grow: 0.3;  
+     flex-grow: 0.1;  
 }
 .btn-size{
    width: 100%;
@@ -331,7 +339,6 @@ table{
    <div class="container">
       <div class="row">
          <div class="roomy-100">
-         
             <!--  user 메인 이미지  -->
             <div>
                <img
@@ -341,16 +348,16 @@ table{
 
             <br>
             <br>
- 
-   
+ 			
+   			
             <!--  지점 좌석 정보  -->
             <div class="width40 float_l">
-               <h6 class="name margin bold"> SPATIUM 혜정점 </h6>
+               <h6 class="name margin bold"> ${memberinfo.branch_name} </h6>
                
                <div> 
                   <table class="bold"> 
                      <tr>
-                        <td class="num">30/40</td>
+                        <td class="num">${useCount} / ${allCount}</td>
                         <td class="num">0/1</td>
                         <td class="num">30/40</td>
                      </tr>
@@ -365,11 +372,19 @@ table{
             
              
 
- <!--  지점 좌석 정보  -->
+ 			<!--  지점 좌석 정보  -->
             <div class="width30 float_l">
-               <h6 class="name margin bold"> 김혜정님의 잔여시간 <span><button class="btn">충전하기</button></span></h6> 
+               <h6 class="name margin bold"> ${memberinfo.member_name}님의 잔여시간 <span><a href="${pageContext.request.contextPath}/member/pay/pay_main"><button class="btn">충전하기</button></a></span></h6>
 	          	<div class="use float_l">
-	          		이용중인 상품이 없습니다. 
+               	<c:choose>
+               		<c:when test="${memberinfo.member_charge != 0}">
+               			<span>${memberinfo.member_charge}시간</span>
+               		</c:when>
+               		<c:otherwise>
+		          		<span>이용중인 상품이 없습니다.</span> 
+               		</c:otherwise>
+               	</c:choose>
+   
 	          	</div>
 
             </div>        
@@ -391,15 +406,14 @@ table{
                <button class="noline" data-toggle="modal" data-target="#myModal">
                 <img class="img" src="${pageContext.request.contextPath}/resources/m/images/pp.png"></button>
                <!-- Modal -->
-               <div class="modal" id="myModal" tabindex="-1" role="dialog"
-                  aria-labelledby="myModalLabel" aria-hidden="true">
+               <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                      <div class="modal-content">
                         <div class="modal-header">
                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                            </button>
-                           <h4 class="modal-title" id="myModalLabel">공도리 챗봇</h4>
+                           <h4 class="modal-title" id="myModalLabel">Spatium 챗봇</h4>
                            </div>
                            <!--  챗봇 시작하기 -->
                            <div class="modal-body">
@@ -408,15 +422,15 @@ table{
                                  <div class="box">
                                     <!-- 이미지 박스 -->
                                     <div class="imgBox">
-                                       <img class="chatimg" src="${pageContext.request.contextPath}/resources/m/images/pp.png">
+                                       <img class="chatimg" src="${pageContext.request.contextPath}/resources/m/images/pp.png"> 
                                     </div>   
                                     <!-- 내용 박스 -->
                                     <div class="innerBox">
-                                       <div class="name">스파봇</div>
+                                       <div class="name">티움봇</div>
                                        <div class="content">
-                                          	😊SPATIUM에 오신걸 환영합니다😊<br><br>
-                                          저희 SPATIUM에 대하여 문의사항이 있으시다면 <br>
-                                          스파봇을 이용해 주세요 ❕ ❗ <br><br>
+                                          	😊WELCOME TO SPATIUM😊<br><br>
+                                          저희 스파티움에 관한 문의사항이 있으시다면 <br>
+                                          티움봇을 이용해 주세요 ❕ ❗ <br><br>
                                           아래에서 원하시는 유형을 선택하시면<br>
                                           해당 유형의 답변을 확인하실 수 있답니당🧡<br><br>
                                           다들 스파티움과 함께 열공하고 <br>
@@ -431,7 +445,7 @@ table{
                                     </div>
                                  </div>   
                                  <div class="chatList">                                 
-                                 </div>
+                                </div>
                                  <!-- 나 -->
       <!--                             <div class="box my"> -->
       <!--                                 <div class="innerBox"> -->
@@ -441,7 +455,7 @@ table{
       <!--                                 </div>                                 -->
       <!--                             </div> -->
   
-                              </div>
+                            </div>
                            </div>
                            <div class="modal-footer">
                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -450,8 +464,8 @@ table{
                   </div>
                </div>
             </div>
-
-
+            
+            
          </div>
       </div>
    </div>

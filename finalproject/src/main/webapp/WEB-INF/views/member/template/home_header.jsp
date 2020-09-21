@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -85,13 +86,14 @@
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
               
-                            <li><a href="#about">소개글</a></li>                    
+                            <li><a href="#about">소개글</a></li>            
                             <li><a href="${pageContext.request.contextPath}/member/notice/noticeList">공지사항</a></li>                    
                             <li><a href="${pageContext.request.contextPath}/member/franchisee/list">지점 스토리</a></li>                
-                            <li><a href="#pricing">가맹 문의</a></li>
+                            <li><a href="${pageContext.request.contextPath}/member/franchisee/question">가맹 문의</a></li>
                             <li><a href="${pageContext.request.contextPath}/member/account/join">회원가입</a></li>
                             <li><a href="${pageContext.request.contextPath}/member/account/login">로그인</a></li>                      
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>  
+
             </nav>
